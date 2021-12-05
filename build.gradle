@@ -1,9 +1,12 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.4.10'
-    id 'com.github.johnrengelman.shadow' version '2.0.4'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
 apply plugin: 'application'
+application {
+    mainClassName = 'MainKt'
+}
 mainClassName = 'MainKt'
 
 group 'com.ikanoshiokara'
@@ -19,6 +22,16 @@ dependencies {
 }
 
 jar {
+    manifest {
+        attributes 'Main-Class': "MainKt"
+    }
+}
+
+shadow {
+    mainClassName = application.mainClassName
+}
+
+shadowJar {
     manifest {
         attributes 'Main-Class': "MainKt"
     }
