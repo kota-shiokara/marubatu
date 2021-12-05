@@ -1,0 +1,25 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.4.10'
+    id 'com.github.johnrengelman.shadow' version '2.0.4'
+}
+
+apply plugin: 'application'
+mainClassName = 'MainKt'
+
+group 'com.ikanoshiokara'
+version '0.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile group: 'org.processing', name: 'core', version: '3.3.7'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': "MainKt"
+    }
+}
